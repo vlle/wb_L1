@@ -4,6 +4,9 @@ import (
   "fmt"
   "time"
   "sync"
+	"os"
+	"os/signal"
+	"syscall"
 )
 
 // Дана структура Human (с произвольным набором полей и методов).
@@ -57,20 +60,87 @@ func t3() {
 
 // Программа должна завершаться по нажатию Ctrl+C. Выбрать и обосновать способ завершения работы всех воркеров.
 
-// n = workers amount
 func t4(n int) {
+  ch := make(chan rune)
+	done := make(chan os.Signal, 1)
+  signal.Notify(done, os.Interrupt, syscall.SIGINT)
+  for i := 0; i < n; i++ {
+    go func() {
+      for {
+        select {
+        case <- done:
+          return
+        case v := <- ch:
+          fmt.Println(string(v))
+        default:
+          continue
+        }
+      }
+    }()
+  }
+  world :=  "Hello, world!"
+  for i := range world {
+    ch <- rune(world[i])
+  }
+}
+
+// Разработать программу, которая будет последовательно отправлять значения в канал, а с другой стороны канала — читать.
+// По истечению N секунд программа должна завершаться.
+func t5(n time.Duration) {
+  data := "Hello, another world!"
   ch := make(chan string)
   go func() {
-    v := <-ch
-    fmt.Println(v)
+    for {
+      v := <- ch
+      fmt.Println(v)
+    }
   }()
-  ch <- "Hello, world!"
+  for i := range data {
+    ch <- string(data[i])
+  }
+  time.Sleep(n * time.Second)
+}
+
+// Реализовать все возможные способы остановки выполнения горутины. 
+func t6() {
+
+}
+
+// Реализовать конкурентную запись данных в map.
+func t7() {
+  type concurr_map struct {
+    mu sync.Mutex
+    m map[int]string
+  }
+  var m concurr_map
+  m.m = make(map[int]string)
+  for i := 0; i < 10; i++ {
+    go func(i int) {
+      m.mu.Lock()
+      m.m[i] = "hello"
+      m.mu.Unlock()
+    }(i)
+  }
+  time.Sleep(4 * time.Second)
+  for i := 0; i < 10; i++ {
+    fmt.Println(m.m[i])
+  }
+}
+
+
+// Дана переменная int64. Разработать программу которая устанавливает i-й бит в 1 или 0.
+func t8() {
+
 }
 
 
 func main() {
-  t1()
-  t2()
-  t3()
-  t4(4)
+  // t1()
+  // t2()
+  // t3()
+  // t4(10)
+  // t5(4)
+  // t6()
+  t7()
+  // t8()
 }
