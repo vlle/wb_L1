@@ -1,23 +1,23 @@
 package main
 
 import (
-  "fmt"
+	"fmt"
 )
 
-type Human struct {}
+type Human struct{}
 
 func (h *Human) SayHi() {
-  fmt.Println("Hi")
+	fmt.Println("Hi")
 }
 
 type Action struct {
-  Human
+	Human
 }
+
 // Дана структура Human (с произвольным набором полей и методов).
 // Реализовать встраивание методов в структуре Action от родительской структуры Human (аналог наследования).
 
-func t1() { 
-  a := Action{}
-  a.SayHi()
+func t1() {
+	a := Action{}
+	a.SayHi()
 }
-
