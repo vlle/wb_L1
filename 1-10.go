@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 func main() {
 	// t1()
 	// t2()
@@ -22,5 +24,12 @@ func main() {
   // t17()
   // t18()
   // t19("главрыба")
-  t20("snow dug sun")
+  // t20("snow dug sun")
+  //
+  //
+  //
+  //
+  //
+  //
+  // fmt.Println(t26("abcfeg"))
 }
