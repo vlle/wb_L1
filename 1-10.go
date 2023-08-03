@@ -28,10 +28,7 @@ func main() {
   // t21()
   // t22(int64(math.Pow(2, 29)), int64(math.Pow(2, 22)))
   // fmt.Println(t23([]int{0, 1, 2, 3, 4}, 2))
-  t24()
-  //
-  //
-  //
-  //
+  // t24()
+  t25()
   // fmt.Println(t26("abcfeg"))
 }
