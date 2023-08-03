@@ -3,7 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
-  // "time"
+	// "time"
 )
 
 // Реализовать все возможные способы остановки выполнения горутины.
@@ -47,7 +47,7 @@ func t6() {
 	close(close_channel)
 
 	// Четвертый способ: Закрытие через контекст
-  print := make(chan bool)
+	print := make(chan bool)
 	ctx, cancel := context.WithCancel(context.Background())
 	go func(ctx context.Context, print chan bool) {
 		for {
@@ -55,15 +55,15 @@ func t6() {
 			case <-ctx.Done():
 				fmt.Println("4: I was finished too!")
 				return
-      case <-print:
-        fmt.Println("4: Waiting to be finished")
+			case <-print:
+				fmt.Println("4: Waiting to be finished")
 			default:
 				continue
 			}
 		}
 	}(ctx, print)
-  print<-true
-  print<-true
-  print<-true
+	print <- true
+	print <- true
+	print <- true
 	cancel()
 }

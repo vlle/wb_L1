@@ -12,13 +12,13 @@ import (
 // 	aabcd — false
 
 func t26(s string) bool {
-  v := strings.ToLower(s)
-  m := make(map[rune]bool)
-  for _, val := range v {
-    if _, ok := m[val]; ok == true {
-      return false
-    }
-    m[val] = true
-  }
-  return true
+	v := strings.ToLower(s)
+	m := make(map[rune]bool)
+	for _, val := range v {
+		if _, ok := m[val]; ok == true {
+			return false
+		}
+		m[val] = true
+	}
+	return true
 }
