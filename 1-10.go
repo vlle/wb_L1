@@ -1,5 +1,7 @@
 package main
 
+// import "fmt"
+
 func main() {
 	// t1()
 	// t2()
@@ -23,8 +25,10 @@ func main() {
   // t18()
   // t19("главрыба")
   // t20("snow dug sun")
-  //
-  //
+  // t21()
+  // t22(int64(math.Pow(2, 29)), int64(math.Pow(2, 22)))
+  // fmt.Println(t23([]int{0, 1, 2, 3, 4}, 2))
+  t24()
   //
   //
   //
