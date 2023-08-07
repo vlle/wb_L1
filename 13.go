@@ -20,4 +20,8 @@ func t13(first, second int) {
 	// first: 110
 	// second: 011
 	fmt.Println("After:", first, second)
+
+	// Или второй способ:
+	first, second = second, first
+	fmt.Println("Swap again:", first, second)
 }

@@ -26,9 +26,15 @@ func (p1 Point) Distance(p2 Point) float64 {
 	} else if p1.y == p2.y {
 		return math.Abs(float64(p1.x - p2.x))
 	} else {
-		a := math.Abs(float64(p1.x - p2.x))
-		b := math.Abs(float64(p1.y - p2.y))
-		return math.Sqrt(math.Pow(a, 2) + math.Pow(b, 2))
+		// считаем гипотенузу
+		// A
+		//   .
+		//   ..
+		//   . .
+		// B .... C
+		ab := math.Abs(float64(p1.x - p2.x))
+		bc := math.Abs(float64(p1.y - p2.y))
+		return math.Sqrt(math.Pow(ab, 2) + math.Pow(bc, 2))
 	}
 }
 

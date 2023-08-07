@@ -41,7 +41,9 @@ func someFunc() {
 }
 
 func fixedSomeFunc(s *string) {
-	*s = createHugeString(1 << 10)[:100]
+	if s != nil {
+		*s = createHugeString(1 << 10)[:100]
+	}
 }
 
 func t15() {

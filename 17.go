@@ -8,6 +8,8 @@ func binSearch(arr []int, search int) int {
 	lo := 0
 	hi := len(arr) - 1
 	for lo <= hi {
+		// Чтобы избежать потенциального переполнения:
+		// mid := lo + (hi - lo) / 2
 		mid := (hi + lo) / 2
 		if arr[mid] < search {
 			lo = mid + 1
@@ -22,5 +24,5 @@ func binSearch(arr []int, search int) int {
 
 func t17() {
 	arr := []int{-10, 4, 5, 123, 515, 10004, 144415}
-	fmt.Printf("Index of %d in arr: %d", -10, binSearch(arr, -10))
+	fmt.Printf("Index of %d in arr: %d", 5, binSearch(arr, 5))
 }

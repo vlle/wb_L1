@@ -18,6 +18,7 @@ type AndroidAdapter struct {
 	SheepJob
 }
 
+// Определяем методы двух этих интерфейсов
 func (a *AndroidAdapter) Live() []string {
 	v := make([]string, 0)
 	actions := []string{"Meeee", "Eating.."}
@@ -37,17 +38,18 @@ func (a *AndroidAdapter) Dream(v []int) {
 	}
 }
 
+// Определяем метод-адаптер
 func (adpt *AndroidAdapter) SheepToDream() {
-	v := adpt.Live()
-	sheep_to_byte := []int{}
-	for _, v := range v {
-		if v == "Meeee" {
-			sheep_to_byte = append(sheep_to_byte, 1)
+	sheep_sounds := adpt.Live()
+	robo_sheep := []int{}
+	for _, sound := range sheep_sounds {
+		if sound == "Meeee" {
+			robo_sheep = append(robo_sheep, 1)
 		} else {
-			sheep_to_byte = append(sheep_to_byte, 0)
+			robo_sheep = append(robo_sheep, 0)
 		}
 	}
-	adpt.Dream(sheep_to_byte)
+	adpt.Dream(robo_sheep)
 }
 
 func t21() {

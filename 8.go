@@ -20,6 +20,9 @@ func t8_2(num int64, i int) {
 
 func t8_3(num int64, i int) {
 	// Переключение бита в 0
-	and := num ^ (0 << i)
-	fmt.Println(and)
+	is_zero := num & (1 << i)
+	if is_zero != 0 {
+		num = num ^ (1 << i)
+	}
+	fmt.Println(num)
 }
